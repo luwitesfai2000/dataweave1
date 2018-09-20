@@ -11,12 +11,7 @@ http://www.mulesoft.org/schema/mule/ee/dw http://www.mulesoft.org/schema/mule/ee
     <flow name="dataweave1Flow">
         <http:listener config-ref="HTTP_Listener_Configuration" path="/" doc:name="HTTP"/>
         <dw:transform-message doc:name="Transform Message">
-            <dw:set-payload><![CDATA[%dw 1.0
-%output application/json
----
-{
-	result: {num11:payload.param1, num22:payload.param2}
-}]]></dw:set-payload>
+            <dw:set-payload resource="classpath:dataweave1.dwl"/>
         </dw:transform-message>
     </flow>
 </mule>
